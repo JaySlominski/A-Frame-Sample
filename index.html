@@ -2,18 +2,62 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene physics="gravity:0" debug="true"> 
+    
       <!-- A few lines to set up the camera -->
-      <a-entity id="cameraWrapper" position="0 0 6">
-        <a-camera></a-camera>
-      </a-entity>
+      <!--<a-entity id="cameraWrapper" position="0 0 6">-->
+      <!--  <a-camera></a-camera>-->
+      <!--</a-entity>-->
 
       <!--    Code your scene here:    -->
-      <a-sphere position="0 1.25 0" radius="1.25" src="#snow"></a-sphere>
-      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#BDCFE7"></a-plane>
-      <a-sky color="aliceblue"></a-sky>
+      <a-sphere position="0 .8 5" radius=".75" src="#snow" color="grey"></a-sphere>
+      <a-camera id="player" static-body position="0 0 18"></a-camera>
+      <a-ring radiusInner="8" radiusOuter="5" material="side: double" position="0 1 0" color="#800000"></a-ring> 
+      <a-ring radiusInner="8" radiusOuter="5" material="side: double" position="0 1 -23" color="#800000"></a-ring> 
+      <a-ring radiusInner="8" radiusOuter="5" material="side: double" position="1 1 -5" color="#800000"></a-ring> 
+      <a-ring radiusInner="8" radiusOuter="5" material="side: double" position="-2 1 -10" color="#800000"></a-ring> 
+      <a-ring radiusInner="8" radiusOuter="5" material="side: double" position="0.2 1 10" color="#800000"></a-ring> 
+     
+      <a-icosahedron kinematic-body shape="sphere" position="-1 1 -4" material="side:double" color="grey"></a-icosahedron>
+     
+      <a-sphere kinematic-body radius=".6" material="side:double" position="1 2 8" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".6" material="side:double" position="-.7 1 7" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".6" material="side:double" position="0 0 -1" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".8" material="side:double" position="-1.6 1.3 -.7" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".9" material="side:double" position="1 2 3" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1" material="side:double"  position="1 1.8 -2" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".8" material="side:double" position="-2.8 .6 -7.8" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".6" material="sideL:double" position="-.2 0 -9" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1.2" material="side_double" position="-1 1.5 -6.5" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1" material="side:double" position="-3 .8 -12" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1.1" material="side:double" position="-1 .4 -14" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1.3" material="side:double" position="1.3 1.4 -15" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".9" material="side:double" position="-3 1 -15" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="2" material="side:double" position="-1.5 1.9 -18" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1" material="side:double" position="-1 0 -21" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="2" material="side:double" position="2.3 1.3 -19.8" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius=".9" material="side:double" position="-2.9 1.4 -20" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="2" material="side:double" position="3 -1 2" color="grey"></a-sphere>
+      <a-sphere kinematic-body radius="1.7" material="side:double" position="2 0 -9" color="grey"></a-sphere>
+      
+      <a-sphere  position="-.1 1 -30" radius="7" src="#snow" color="goldenrod"></a-sphere>
+      
+      <a-cylinder kinematic-body position="0 1 -7" rotation="90" radius="5" height="59" color="none"></a-cylinder>
+      
+      <a-assets>
+            <a-asset-item id="trophyobj" src="models/trophy.obj"></a-asset-item>
+            <a-asset-item id="trophymtl" src="models/trophy.mtl"></a-asset-item>
+        </a-assets>
+
+        <a-obj-model src="#trophyobj" mtl="#trophymtl" position="0 -3 -33" scale="1.3 1.3 1.3"></a-obj-model>
+        
+        <a-text value="Mission Successful!" scale="5 5 5" color="cadetblue" position="-5 6 -30"></a-text>
+
+      <a-sky src="data:image/jpeg;base64,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"></a-sky>
     </a-scene>
   </body>
+  <script src="spacescript.js"></script>
 </html>
